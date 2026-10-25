@@ -103,7 +103,7 @@
     </div>
 
     <div class="botones">
-        <a class="boton-inicio" href="servicios.php">Conocer servicios</a>
+        <a class="boton-inicio" href="servicios_cliente.php">Conocer servicios</a>
         <a class="boton-inicio" href="login_registro.php">Agendar mi cita</a>
     </div>
 </div>

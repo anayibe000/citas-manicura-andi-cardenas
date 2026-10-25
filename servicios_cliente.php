@@ -1,14 +1,10 @@
 <?php
 // servicios_cliente.php
-// Lista de servicios para la clienta que ya inició sesión o se registró.
+// Lista de servicios visible para todas las clientas (nuevas y antiguas).
 // Se muestran de a 3 por pantalla, con botones para pasar de página.
 session_start();
 require 'conexion.php';
 
-if (!isset($_SESSION['id_cliente'])) {
-    header('Location: login_registro.php');
-    exit;
-}
 
 $porPagina = 3;
 $pagina = max(1, (int)($_GET['pagina'] ?? 1));
@@ -134,9 +130,17 @@ $servicios = $stmt->get_result();
 <body>
 
 <div class="pantalla">
-    <a class="volver" href="bienvenida_cliente.php" aria-label="Volver">&larr;</a>
+    <?php if (isset($_SESSION['nombre_cliente'])): ?>
+        <a class="volver" href="bienvenida_cliente.php" aria-label="Volver">&larr;</a>
+    <?php else: ?>
+        <a class="volver" href="presentacion.php" aria-label="Volver">&larr;</a>
+    <?php endif; ?>
 
-    <p class="saludo">Hola, <?= htmlspecialchars($_SESSION['nombre_cliente']) ?> </p>
+    <?php if (isset($_SESSION['nombre_cliente'])): ?>
+        <p class="saludo">Hola, <?= htmlspecialchars($_SESSION['nombre_cliente']) ?></p>
+    <?php else: ?>
+        <p class="saludo">¡Hola, bienvenida!</p>
+    <?php endif; ?>
     <h1>Nuestros servicios</h1>
 
     <?php while ($s = $servicios->fetch_assoc()): ?>
