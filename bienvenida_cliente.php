@@ -65,6 +65,14 @@ if (!isset($_SESSION['id_cliente'])) {
         }
         .boton-continuar:hover {
             background: #f79aa3;
+}
+                    .cerrar-sesion {
+            display: block;
+            margin-top: 18px;
+            color: #b96b7e;
+            font-size: 13px;
+            text-decoration: underline;
+        
         }
     </style>
 </head>
@@ -76,6 +84,7 @@ if (!isset($_SESSION['id_cliente'])) {
         <p>Nos alegra tenerte aquí. Descubre nuestros servicios y agenda tu cita para consentir tus uñas. 💖</p>
 
         <a class="boton-continuar" href="servicios_cliente.php">Continuar</a>
+                <a class="cerrar-sesion" href="cerrar_sesion.php">Cerrar sesión</a>
     </div>
 </div>
 
